@@ -11,5 +11,10 @@ namespace Player
         {
             vrCamera.enabled = true;
         }
+
+        private void Update()
+        {
+            //transform.position += new Vector3(0, 1, 0) * Time.deltaTime;
+        }
     }
 }
