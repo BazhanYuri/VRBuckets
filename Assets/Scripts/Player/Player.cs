@@ -1,20 +1,34 @@
 ﻿using System;
+using Normal.Realtime;
+using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Player
 {
     public class Player : MonoBehaviour
     {
         public Camera vrCamera;
+        public RealtimeView RealtimeView;
+        public XROrigin XROrigin;
+        public ActionBasedController leftController;
+        public ActionBasedController rightController;
 
-        private void Awake()
+        private void Start()
         {
-            vrCamera.enabled = true;
-        }
-
-        private void Update()
-        {
-            //transform.position += new Vector3(0, 1, 0) * Time.deltaTime;
+            if (RealtimeView.isOwnedLocally)
+            {
+                vrCamera.enabled = true;
+                XROrigin.enabled = true;
+            }
+            else
+            {
+                vrCamera.enabled = false;
+                Destroy(XROrigin);
+                Destroy(leftController);
+                Destroy(rightController);
+            }
         }
     }
 }

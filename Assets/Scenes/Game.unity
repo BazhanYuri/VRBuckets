@@ -294,10 +294,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114568985850100520, guid: fca9d4afb3743274e8f7da14019d7e0b,
         type: 3}
+      propertyPath: _localPlayer.head
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568985850100520, guid: fca9d4afb3743274e8f7da14019d7e0b,
+        type: 3}
+      propertyPath: _localPlayer.root
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568985850100520, guid: fca9d4afb3743274e8f7da14019d7e0b,
+        type: 3}
       propertyPath: _localAvatarPrefab
       value: 
-      objectReference: {fileID: 277930715001672256, guid: 2f9087fe4a25ef541a848b654b53b2c5,
+      objectReference: {fileID: 1435502846325602, guid: c368172cfe3883a489f11e575e3103e5,
         type: 3}
+    - target: {fileID: 114568985850100520, guid: fca9d4afb3743274e8f7da14019d7e0b,
+        type: 3}
+      propertyPath: _localPlayer.leftHand
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114568985850100520, guid: fca9d4afb3743274e8f7da14019d7e0b,
+        type: 3}
+      propertyPath: _localPlayer.rightHand
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

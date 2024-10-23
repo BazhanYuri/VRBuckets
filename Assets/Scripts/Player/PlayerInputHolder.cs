@@ -6,7 +6,7 @@ namespace Player
 {
     public class PlayerInputHolder : MonoBehaviour
     {
-        private global::PlayerInput playerInput;
+        private PlayerInput playerInput;
         
         public event Action OnTurn;
         
