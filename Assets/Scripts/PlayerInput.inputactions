@@ -2,28 +2,39 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Player",
+            "name": "LeftController",
             "id": "7c49e102-3f3d-4bb3-a9ff-c36064c2e12b",
             "actions": [
                 {
-                    "name": "Turn",
-                    "type": "Value",
+                    "name": "BallSpawn",
+                    "type": "Button",
                     "id": "6d734354-94d9-4a3e-a58b-501dd3b65be2",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "0d0cea19-0a5e-4160-aefd-c745ca728048",
-                    "path": "<XRController>{RightHand}/{Primary2DAxis}",
-                    "interactions": "Sector(directions=12,sweepBehavior=1),Sector(directions=2,sweepBehavior=2)",
+                    "id": "254040a7-b9ce-4494-b0c1-f1dd55a001eb",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Turn",
+                    "action": "BallSpawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c593e8d5-5ab4-416e-a077-93fd925bd058",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BallSpawn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

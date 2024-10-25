@@ -1,8 +1,6 @@
-﻿using System;
-using Normal.Realtime;
+﻿using Normal.Realtime;
 using Unity.XR.CoreUtils;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Player
@@ -12,8 +10,10 @@ namespace Player
         public Camera vrCamera;
         public RealtimeView RealtimeView;
         public XROrigin XROrigin;
+        public BallsSpawner ballsSpawner;
         public ActionBasedController leftController;
         public ActionBasedController rightController;
+        
 
         private void Start()
         {
@@ -21,6 +21,7 @@ namespace Player
             {
                 vrCamera.enabled = true;
                 XROrigin.enabled = true;
+                ballsSpawner.enabled = true;
             }
             else
             {
@@ -28,6 +29,7 @@ namespace Player
                 Destroy(XROrigin);
                 Destroy(leftController);
                 Destroy(rightController);
+                Destroy(ballsSpawner);
             }
         }
     }
