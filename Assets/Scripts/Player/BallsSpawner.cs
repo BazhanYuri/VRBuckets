@@ -8,9 +8,12 @@ namespace Player
 {
     public class BallsSpawner : MonoBehaviour
     {
-        public TeamManager teamManager;
+        public Player player;
         public InputActionReference spawnAction;
         public Transform spawnPoint;
+        
+        private ScoreBoard _scoreBoard;
+        public event Action BallThrown;
 
         private void OnEnable()
         {
@@ -21,6 +24,11 @@ namespace Player
         private void OnDisable()
         {
             spawnAction.action.performed -= OnSpawn;
+        }
+
+        private void Start()
+        {
+            _scoreBoard = FindObjectOfType<ScoreBoard>();
         }
 
         private void Update()
@@ -38,10 +46,16 @@ namespace Player
 
         private void SpawnBall()
         {
+            if (player.Index != _scoreBoard.CurrentTurnIndex)
+            {
+                return;
+            }
+            
             Ball ball = Realtime.Instantiate("Ball", spawnPoint.position, spawnPoint.rotation)
                 .GetComponent<Ball>();
 
-            ball.SetTeam(teamManager.playerTeam);
+            ball.SetTeam(player.team);
+            ball.OnBallThrown += () => BallThrown?.Invoke();
         }
     }
 }

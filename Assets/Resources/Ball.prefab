@@ -499,3 +499,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d38b95d9e0742b0abbd74be836308ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabInteractable: {fileID: 1620575439125774352}

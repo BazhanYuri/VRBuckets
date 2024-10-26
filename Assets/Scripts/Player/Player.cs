@@ -1,4 +1,7 @@
-﻿using Normal.Realtime;
+﻿using Enums;
+using Multiplayer.Services;
+using Normal.Realtime;
+using UI.Player;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -13,7 +16,15 @@ namespace Player
         public BallsSpawner ballsSpawner;
         public ActionBasedController leftController;
         public ActionBasedController rightController;
+        public TeamChangePopUp teamChangePopUp;
         
+        
+        public Team team;
+
+        public int Index
+        {
+            get => RealtimeView.ownerID;
+        }
 
         private void Start()
         {
@@ -22,6 +33,10 @@ namespace Player
                 vrCamera.enabled = true;
                 XROrigin.enabled = true;
                 ballsSpawner.enabled = true;
+                ScoreBoard scoreBoard = FindObjectOfType<ScoreBoard>();
+                
+                RealtimeTransform realtimeTransform = scoreBoard.GetComponent<RealtimeTransform>();
+                realtimeTransform.RequestOwnership();
             }
             else
             {
@@ -31,6 +46,11 @@ namespace Player
                 Destroy(rightController);
                 Destroy(ballsSpawner);
             }
+        }
+        public void AssignTeam(Team second)
+        {
+            team = second;
+            teamChangePopUp.SetText(team);
         }
     }
 }

@@ -8,5 +8,8 @@
         
         [RealtimeProperty(4, true, true)]
         private int _secondTeamCount;
+        
+        [RealtimeProperty(5, true, true)]
+        private int _playerTurnIndex;
     }
 }
