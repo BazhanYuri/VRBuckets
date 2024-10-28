@@ -48,6 +48,7 @@ public class Ball : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             InvokeBallThrown();
+            transform.position = _basketHoop.goalPointForPC.position + new Vector3(1.0f, 0, 0);
         }
     }
 
