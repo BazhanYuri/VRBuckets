@@ -1643,6 +1643,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2025873554}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1472956066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8949359423326850945, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 4900507852846760907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1485526869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,6 +2327,37 @@ MonoBehaviour:
   m_Script: {fileID: -363599832, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1965068913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1965068914}
+  m_Layer: 0
+  m_Name: GoalPointForPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1965068914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965068913}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.646, z: 0.053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1472956066}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012285768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3373,7 +3410,7 @@ PrefabInstance:
     - target: {fileID: 13241723875966802, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.205
+      value: 0.104
       objectReference: {fileID: 0}
     - target: {fileID: 13241723875966802, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
         type: 3}
@@ -3415,6 +3452,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1692637031523274530, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
+        type: 3}
+      propertyPath: goalPointForPC
+      value: 
+      objectReference: {fileID: 1965068914}
     - target: {fileID: 2053038083086400845, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
         type: 3}
       propertyPath: m_Name
@@ -3427,7 +3469,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f3eda334368c47c43bd97b1513f6cada, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8949359423326850945, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1965068914}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f63f7ebf01bc9146a260f5e0c3557e9, type: 3}
 --- !u!4 &4931218026936391423

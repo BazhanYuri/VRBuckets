@@ -17,6 +17,7 @@ namespace Player
         public ActionBasedController leftController;
         public ActionBasedController rightController;
         public TeamChangePopUp teamChangePopUp;
+        public PCMovement pcMovement;
         
         
         public Team team;
@@ -45,6 +46,7 @@ namespace Player
                 Destroy(leftController);
                 Destroy(rightController);
                 Destroy(ballsSpawner);
+                Destroy(pcMovement);
             }
         }
         public void AssignTeam(Team second)

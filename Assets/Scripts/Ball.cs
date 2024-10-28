@@ -8,7 +8,8 @@ public class Ball : MonoBehaviour
     public XRGrabInteractable grabInteractable;
     
     private Team _team;
-    
+    private BasketHoop _basketHoop;
+
     public event Action OnBallThrown;
 
     public Team Team
@@ -25,6 +26,25 @@ public class Ball : MonoBehaviour
     private void OnDisable()
     {
         grabInteractable.selectExited.RemoveListener(OnSelectExited);
+    }
+
+    private void Awake()
+    {
+        _basketHoop = FindObjectOfType<BasketHoop>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            OnBallThrown?.Invoke();
+            transform.position = _basketHoop.goalPointForPC.position;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            OnBallThrown?.Invoke();
+        }
     }
 
     public void SetTeam(Team team)

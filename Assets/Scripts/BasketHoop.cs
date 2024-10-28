@@ -6,6 +6,7 @@ public class BasketHoop : MonoBehaviour
 {
     public BasketHoopTrigger firstTrigger;
     public BasketHoopTrigger secondTrigger;
+    public Transform goalPointForPC;
 
     private ScoreBoard _scoreBoard;
     private bool _firstTriggerActivated;
