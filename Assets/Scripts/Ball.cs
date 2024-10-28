@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using DefaultNamespace;
 using Enums;
+using Normal.Realtime;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -9,6 +12,7 @@ public class Ball : MonoBehaviour
     
     private Team _team;
     private BasketHoop _basketHoop;
+    public ThrowScoreZone currentThrowZone;
 
     public event Action<Ball> OnBallThrown;
 
@@ -37,13 +41,13 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            OnBallThrown?.Invoke(this);
+            InvokeBallThrown();
             transform.position = _basketHoop.goalPointForPC.position;
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            OnBallThrown?.Invoke(this);
+            InvokeBallThrown();
         }
     }
 
@@ -51,9 +55,22 @@ public class Ball : MonoBehaviour
     {
         _team = team;
     }
-    
+
     private void OnSelectExited(SelectExitEventArgs args)
     {
+        InvokeBallThrown();
+    }
+
+    private void InvokeBallThrown()
+    {
         OnBallThrown?.Invoke(this);
+
+        StartCoroutine(DestroyBall());
+    }
+
+    private IEnumerator DestroyBall()
+    {
+        yield return new WaitForSeconds(5f);
+        Realtime.Destroy(gameObject);
     }
 }

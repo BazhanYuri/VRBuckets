@@ -1,4 +1,5 @@
 ﻿using System;
+using DefaultNamespace;
 using Multiplayer.Models;
 using Normal.Realtime;
 using TMPro;
@@ -37,24 +38,41 @@ namespace Multiplayer.Services
             }
         }
 
-        public void IncrementScoreForFirstTeam()
+        public void IncrementScoreForFirstTeam(Ball ball)
         {
             if (realtimeTransform.isOwnedLocally)
             {
-                model.firstTeamScore += 1;
+                ThrowScoreZone throwScoreZone = FindCurrentZoneInPlayer();
+                model.firstTeamScore += throwScoreZone.score;
                 OnScoreChanged?.Invoke();
             }
         }
-        
-        public void IncrementScoreForSecondTeam()
+
+        public void IncrementScoreForSecondTeam(Ball ball)
         {
             if (realtimeTransform.isOwnedLocally)
             {
-                model.secondTeamScore += 1;
+                ThrowScoreZone throwScoreZone = FindCurrentZoneInPlayer();
+                model.secondTeamScore +=  throwScoreZone.score;
                 OnScoreChanged?.Invoke();
             }
         }
-        
+
+        private ThrowScoreZone FindCurrentZoneInPlayer()
+        {
+            Player.Player[] players = FindObjectsOfType<Player.Player>();
+            
+            foreach (var player in players)
+            {
+                if (player.Index == model.playerTurnIndex)
+                {
+                    return player.areaThrowChecker.CurrentZone;
+                }
+            }
+            
+            return null;
+        }
+
         public void UpdateTeamCount(int first, int second)
         {
             firstTeamCountText.text = "Count: " + first.ToString();

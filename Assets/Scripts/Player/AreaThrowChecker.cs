@@ -7,43 +7,19 @@ namespace Player
 {
     public class AreaThrowChecker : MonoBehaviour
     {
-        public Player player;
-        public UIComponent backToZonePopUp;
-        
-        private ScoreBoard _scoreBoard;
-        
-        private bool _isInZone = false;
+        private ThrowScoreZone _currentZone;
+
+        public ThrowScoreZone CurrentZone
+        {
+            get => _currentZone;
+            set => _currentZone = value;
+        }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out AreaThrow areaThrow))
+            if (other.TryGetComponent(out ThrowScoreZone areaThrow))
             {
-                _isInZone = true;
-            }
-        }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.TryGetComponent(out AreaThrow areaThrow))
-            {
-                _isInZone = false;
-            }
-        }
-
-        private void Start()
-        {
-            _scoreBoard = FindObjectOfType<ScoreBoard>();
-        }
-
-        private void Update()
-        {
-            if (player.Index == _scoreBoard.CurrentTurnIndex && _isInZone == false)
-            {
-                backToZonePopUp.Show();
-            }
-            else
-            {
-                backToZonePopUp.Hide();
+                _currentZone = areaThrow;
             }
         }
     }

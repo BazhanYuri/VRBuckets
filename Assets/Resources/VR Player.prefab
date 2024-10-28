@@ -769,6 +769,7 @@ MonoBehaviour:
   rightController: {fileID: 8694564018942550707}
   teamChangePopUp: {fileID: 1355766804149651175}
   pcMovement: {fileID: 8099114517227468837}
+  areaThrowChecker: {fileID: 5413346780941942616}
   team: 0
 --- !u!114 &2049649457786269952
 MonoBehaviour:
@@ -2227,6 +2228,7 @@ MonoBehaviour:
   spawnAction: {fileID: -7086543575760184, guid: 4fb1d98f993b69443ac88ab309b0b9ef,
     type: 3}
   spawnPoint: {fileID: 4258753728346310}
+  currentThrowZoneChecker: {fileID: 5413346780941942616}
 --- !u!1 &3904748039265301795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,8 +2621,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb31b4cc2db44a6929415f4c479aa4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3023513434069653395}
-  backToZonePopUp: {fileID: 3686321165300180712}
 --- !u!136 &5319650350952426233
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2962,23 +2962,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThrowZonePopUp
       objectReference: {fileID: 0}
+    - target: {fileID: 7874880288759378242, guid: 913a390c313e0b94db4e5abeb5056ae5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 913a390c313e0b94db4e5abeb5056ae5, type: 3}
---- !u!114 &3686321165300180712 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4461500374010345395, guid: 913a390c313e0b94db4e5abeb5056ae5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1063446968309649755}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b1ab80e5ea42e08b3a4951e6624557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &3732308412821073431 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4398272838934921036, guid: 913a390c313e0b94db4e5abeb5056ae5,
@@ -3732,6 +3725,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PopUp_team_changed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485426614088946795, guid: 255068a021221b5449d3761e07ad216b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

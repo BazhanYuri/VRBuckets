@@ -3,6 +3,7 @@ using Multiplayer.Services;
 using Normal.Realtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -11,6 +12,7 @@ namespace Player
         public Player player;
         public InputActionReference spawnAction;
         public Transform spawnPoint;
+        public AreaThrowChecker currentThrowZoneChecker;
         
         private ScoreBoard _scoreBoard;
         public event Action BallThrown;
@@ -61,6 +63,7 @@ namespace Player
         private void OnBallThrown(Ball obj)
         {
             BallThrown?.Invoke();
+            obj.currentThrowZone = currentThrowZoneChecker.CurrentZone;
             obj.OnBallThrown -= OnBallThrown;
         }
     }

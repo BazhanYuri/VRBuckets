@@ -54,11 +54,11 @@ public class BasketHoop : MonoBehaviour
     {
         if (ball.Team == Team.First)
         {
-            _scoreBoard.IncrementScoreForFirstTeam();
+            _scoreBoard.IncrementScoreForFirstTeam(ball);
         }
         else
         {
-            _scoreBoard.IncrementScoreForSecondTeam();
+            _scoreBoard.IncrementScoreForSecondTeam(ball);
         }
     }
 }

@@ -139,7 +139,7 @@ namespace Multiplayer.Services
 
         private void OnGoaled()
         {
-            StopAllCoroutines();
+            //StopAllCoroutines();
         }
 
         private void OnBallThrown()
@@ -158,5 +158,4 @@ namespace Multiplayer.Services
             _scoreBoard.CurrentTurnIndex = _scoreBoard.CurrentTurnIndex == 0 ? 1 : 0;
         }
     }
-
 }

@@ -18,8 +18,9 @@ namespace Player
         public ActionBasedController rightController;
         public TeamChangePopUp teamChangePopUp;
         public PCMovement pcMovement;
-        
-        
+        public AreaThrowChecker areaThrowChecker;
+
+
         public Team team;
 
         public int Index
