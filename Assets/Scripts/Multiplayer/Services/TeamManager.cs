@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Enums;
 using Normal.Realtime;
 using Player;
@@ -12,7 +13,7 @@ namespace Multiplayer.Services
         private int _team2Count = 0;
         private RealtimeAvatarManager _manager;
         private ScoreBoard _scoreBoard;
-
+        
         private void Awake()
         {
             _manager = FindObjectOfType<RealtimeAvatarManager>();

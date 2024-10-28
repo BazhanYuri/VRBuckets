@@ -10,6 +10,6 @@
         private int _secondTeamScore;
         
         [RealtimeProperty(3, true, true)]
-        private int _playerTurnIndex;
+        private int _playerTurnIndex = -1;
     }
 }
