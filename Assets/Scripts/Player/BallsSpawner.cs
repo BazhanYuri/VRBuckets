@@ -55,7 +55,13 @@ namespace Player
                 .GetComponent<Ball>();
 
             ball.SetTeam(player.team);
-            ball.OnBallThrown += () => BallThrown?.Invoke();
+            ball.OnBallThrown += OnBallThrown;
+        }
+
+        private void OnBallThrown(Ball obj)
+        {
+            BallThrown?.Invoke();
+            obj.OnBallThrown -= OnBallThrown;
         }
     }
 }

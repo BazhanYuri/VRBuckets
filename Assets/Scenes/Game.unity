@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 8204968}
   - component: {fileID: 8204970}
   - component: {fileID: 8204969}
+  - component: {fileID: 8204971}
   m_Layer: 0
   m_Name: TeamManager
   m_TagString: Untagged
@@ -167,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3515bc79647f4bc1846d3fa5ee14427e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RealtimeTransform: {fileID: 8204971}
 --- !u!114 &8204970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +191,27 @@ MonoBehaviour:
   _components:
   - componentID: 1
     component: {fileID: 0}
+  - componentID: 2
+    component: {fileID: 8204971}
   _childViews: []
+--- !u!114 &8204971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1029778088, guid: ebae63e7edba59945a994528ada1f7a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolate: 1
+  _syncPosition: 1
+  _syncRotation: 1
+  _syncScale: 1
+  _syncVelocity: 1
+  _maintainOwnershipWhileSleeping: 0
 --- !u!1001 &148996570
 PrefabInstance:
   m_ObjectHideFlags: 0

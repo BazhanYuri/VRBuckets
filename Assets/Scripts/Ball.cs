@@ -10,7 +10,7 @@ public class Ball : MonoBehaviour
     private Team _team;
     private BasketHoop _basketHoop;
 
-    public event Action OnBallThrown;
+    public event Action<Ball> OnBallThrown;
 
     public Team Team
     {
@@ -37,13 +37,13 @@ public class Ball : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            OnBallThrown?.Invoke();
+            OnBallThrown?.Invoke(this);
             transform.position = _basketHoop.goalPointForPC.position;
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            OnBallThrown?.Invoke();
+            OnBallThrown?.Invoke(this);
         }
     }
 
@@ -54,6 +54,6 @@ public class Ball : MonoBehaviour
     
     private void OnSelectExited(SelectExitEventArgs args)
     {
-        OnBallThrown?.Invoke();
+        OnBallThrown?.Invoke(this);
     }
 }

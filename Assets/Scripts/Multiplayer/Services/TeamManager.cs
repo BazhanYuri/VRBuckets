@@ -9,6 +9,8 @@ namespace Multiplayer.Services
 {
     public class TeamManager : MonoBehaviour
     {
+        public RealtimeTransform RealtimeTransform;
+        
         private int _team1Count = 0;
         private int _team2Count = 0;
         private RealtimeAvatarManager _manager;
@@ -30,13 +32,13 @@ namespace Multiplayer.Services
         private void OnAvatarCreated(RealtimeAvatarManager avatarmanager, RealtimeAvatar avatar, bool islocalavatar)
         {
             Player.Player player = avatar.GetComponent<Player.Player>();
-            player.ballsSpawner.BallThrown += OnBallThrown;
+                player.ballsSpawner.BallThrown += OnBallThrown;
         }
         
         private void OnAvatarDestroyed(RealtimeAvatarManager avatarmanager, RealtimeAvatar avatar, bool islocalavatar)
         {
             Player.Player player = avatar.GetComponent<Player.Player>();
-            player.ballsSpawner.BallThrown -= OnBallThrown;
+                player.ballsSpawner.BallThrown -= OnBallThrown;
         }
 
         private void AssignTeam(RealtimeAvatarManager avatarmanager, RealtimeAvatar avatar, bool islocalavatar)
@@ -137,12 +139,7 @@ namespace Multiplayer.Services
 
         private void OnGoaled()
         {
-            StopCoroutine(StartTimerToCheckIfBallDidNotHit());
-        }
-
-        private void SwapTurn()
-        {
-            _scoreBoard.CurrentTurnIndex = _scoreBoard.CurrentTurnIndex == 0 ? 1 : 0;
+            StopAllCoroutines();
         }
 
         private void OnBallThrown()
@@ -154,6 +151,11 @@ namespace Multiplayer.Services
         {
             yield return new WaitForSeconds(5);
             SwapTurn();
+        }
+
+        private void SwapTurn()
+        {
+            _scoreBoard.CurrentTurnIndex = _scoreBoard.CurrentTurnIndex == 0 ? 1 : 0;
         }
     }
 
