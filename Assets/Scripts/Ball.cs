@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
 {
     public RealtimeTransform realtimeTransform;
     public XRGrabInteractable grabInteractable;
+    public AudioSource ballAudioSource;
     
     private Team _team;
     private BasketHoop _basketHoop;
@@ -31,6 +32,11 @@ public class Ball : MonoBehaviour
     private void OnDisable()
     {
         grabInteractable.selectExited.RemoveListener(OnSelectExited);
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        ballAudioSource.Play();
     }
 
     private void Awake()

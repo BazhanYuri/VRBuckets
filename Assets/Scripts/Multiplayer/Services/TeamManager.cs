@@ -8,6 +8,8 @@ namespace Multiplayer.Services
     public class TeamManager : MonoBehaviour
     {
         public RealtimeTransform RealtimeTransform;
+        public AudioSource countDownAudioSource;
+
         
         private int _team1Count = 0;
         private int _team2Count = 0;
@@ -122,6 +124,7 @@ namespace Multiplayer.Services
             
             while (countdown > 0)
             {
+                countDownAudioSource.Play();
                 _scoreBoard.countDownText.text = "Starts in: " + countdown;
                 yield return new WaitForSeconds(1);
                 countdown--;

@@ -10,6 +10,7 @@ namespace UI
         public TextMeshProUGUI winText;
         public TextMeshProUGUI countDownText;
         public Multiplayer.Services.ScoreBoard scoreBoard;
+        public Transform vfxRoot;
         
         private bool _countDownStarted = false;
 
@@ -27,13 +28,13 @@ namespace UI
                 return;
             }
             _countDownStarted = true;
-
+            vfxRoot.gameObject.SetActive(true);
             StartCoroutine(ReloadScene());
         }
 
         private IEnumerator ReloadScene()
         {
-            int countDown = 5;
+            int countDown = 10;
             while (countDown > 0)
             {
                 countDownText.text = "Game restarts in: " + countDown;

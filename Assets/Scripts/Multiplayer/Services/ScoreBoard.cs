@@ -5,6 +5,7 @@ using Normal.Realtime;
 using TMPro;
 using UI;
 using UI.ScoreBoard;
+using UnityEngine;
 
 namespace Multiplayer.Services
 {
@@ -24,9 +25,10 @@ namespace Multiplayer.Services
         public TeamUI secondTeamUI;
         
         public RealtimeAvatarManager manager;
-
-        
         public WinScreen winScreen;
+        
+        public AudioSource goalAudioSource;
+        
         
         private int _currentScoreFirstTeam = 0;
         private int _currentScoreSecondTeam = 0;
@@ -53,6 +55,8 @@ namespace Multiplayer.Services
                 model.firstTeamScore += throwScoreZone.score;
                 OnScoreChanged?.Invoke();
             }
+            
+            goalAudioSource.Play();
         }
 
         public void IncrementScoreForSecondTeam(Ball ball)
@@ -63,6 +67,8 @@ namespace Multiplayer.Services
                 model.secondTeamScore +=  throwScoreZone.score;
                 OnScoreChanged?.Invoke();
             }
+            
+            goalAudioSource.Play();
         }
 
         public void ResetScore()
@@ -145,13 +151,13 @@ namespace Multiplayer.Services
 
         private void CheckWinCondition()
         {
-            if (_currentScoreFirstTeam >= 1)
+            if (_currentScoreFirstTeam >= 10)
             {
                 winScreen.SetWinner(0);
                 winScreen.Show();
                 gameObject.SetActive(false);
             }
-            else if (_currentScoreSecondTeam >= 1)
+            else if (_currentScoreSecondTeam >= 10)
             {
                 winScreen.SetWinner(1);
                 winScreen.Show();
