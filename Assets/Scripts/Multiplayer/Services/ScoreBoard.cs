@@ -3,6 +3,7 @@ using DefaultNamespace;
 using Multiplayer.Models;
 using Normal.Realtime;
 using TMPro;
+using UI;
 using UI.ScoreBoard;
 
 namespace Multiplayer.Services
@@ -21,6 +22,8 @@ namespace Multiplayer.Services
         
         public TeamUI firstTeamUI;
         public TeamUI secondTeamUI;
+        
+        public WinScreen winScreen;
         
         private int _currentScoreFirstTeam = 0;
         private int _currentScoreSecondTeam = 0;
@@ -45,6 +48,16 @@ namespace Multiplayer.Services
                 ThrowScoreZone throwScoreZone = FindCurrentZoneInPlayer();
                 model.firstTeamScore += throwScoreZone.score;
                 OnScoreChanged?.Invoke();
+                
+                if (model.firstTeamScore >= 7)
+                {
+                    winScreen.SetWinner(0);
+                    winScreen.Show();
+                    model.playerTurnIndex = -1;
+                    model.firstTeamScore = 0;
+                    model.secondTeamScore = 0;
+                    gameObject.SetActive(false);
+                }
             }
         }
 
@@ -55,6 +68,16 @@ namespace Multiplayer.Services
                 ThrowScoreZone throwScoreZone = FindCurrentZoneInPlayer();
                 model.secondTeamScore +=  throwScoreZone.score;
                 OnScoreChanged?.Invoke();
+                
+                if (model.secondTeamScore >= 7)
+                {
+                    winScreen.SetWinner(1);
+                    winScreen.Show();
+                    model.playerTurnIndex = -1;
+                    model.firstTeamScore = 0;
+                    model.secondTeamScore = 0;
+                    gameObject.SetActive(false);
+                }
             }
         }
 

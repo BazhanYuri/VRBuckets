@@ -52,6 +52,7 @@ public class Ball : MonoBehaviour
         }
     }
 
+    
     public void SetTeam(Team team)
     {
         _team = team;
