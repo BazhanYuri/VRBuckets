@@ -10,6 +10,8 @@ namespace UI
         public TextMeshProUGUI winText;
         public TextMeshProUGUI countDownText;
         public Multiplayer.Services.ScoreBoard scoreBoard;
+        
+        private bool _countDownStarted = false;
 
 
         public void SetWinner(int index)
@@ -20,6 +22,11 @@ namespace UI
         public override void Show()
         {
             base.Show();
+            if (_countDownStarted == true)
+            {
+                return;
+            }
+            _countDownStarted = true;
 
             StartCoroutine(ReloadScene());
         }
@@ -29,7 +36,7 @@ namespace UI
             int countDown = 5;
             while (countDown > 0)
             {
-                countDownText.text = "Game starts in: " + countDown;
+                countDownText.text = "Game restarts in: " + countDown;
                 yield return new WaitForSeconds(1);
                 countDown--;
             }

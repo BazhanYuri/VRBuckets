@@ -8,6 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Ball : MonoBehaviour
 {
+    public RealtimeTransform realtimeTransform;
     public XRGrabInteractable grabInteractable;
     
     private Team _team;
@@ -60,6 +61,10 @@ public class Ball : MonoBehaviour
 
     private void OnSelectExited(SelectExitEventArgs args)
     {
+        if (realtimeTransform.isOwnedLocally == false)
+        {
+            return;
+        }
         InvokeBallThrown();
     }
 

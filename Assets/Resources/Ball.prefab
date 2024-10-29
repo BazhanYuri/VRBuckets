@@ -499,4 +499,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d38b95d9e0742b0abbd74be836308ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  realtimeTransform: {fileID: 1055925072197641844}
   grabInteractable: {fileID: 1620575439125774352}
+  currentThrowZone: {fileID: 0}

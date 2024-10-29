@@ -1416,10 +1416,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5737289423910167622, guid: ee6de03ce1986834a91c43107d49eedb,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6999468099185486853, guid: ee6de03ce1986834a91c43107d49eedb,
         type: 3}
       propertyPath: m_Name
       value: WinScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8548288451144327880, guid: ee6de03ce1986834a91c43107d49eedb,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3702,6 +3712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hoop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053038083086400845, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4679355220408074277, guid: 8f63f7ebf01bc9146a260f5e0c3557e9,
         type: 3}

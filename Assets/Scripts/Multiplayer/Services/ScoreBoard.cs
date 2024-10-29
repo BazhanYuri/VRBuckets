@@ -33,6 +33,7 @@ namespace Multiplayer.Services
         private int _currentTurnIndex = 0;
         
         public event Action OnScoreChanged; 
+        public event Action OnTurnChanged; 
 
         public int CurrentTurnIndex
         {
@@ -161,6 +162,7 @@ namespace Multiplayer.Services
         private void UpdatePlayerTurn()
         {
             whoseTurnText.text = "Player " + (_currentTurnIndex + 1) + "'s turn";
+            OnTurnChanged?.Invoke();
         }
     }
 }
