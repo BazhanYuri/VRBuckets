@@ -9,12 +9,14 @@ namespace UI
     {
         public TextMeshProUGUI winText;
         public TextMeshProUGUI countDownText;
+        public Multiplayer.Services.ScoreBoard scoreBoard;
 
 
         public void SetWinner(int index)
         {
             winText.text = index == 0 ? "Player 1 Wins!" : "Player 2 Wins!";
         }
+
         public override void Show()
         {
             base.Show();
@@ -31,6 +33,8 @@ namespace UI
                 yield return new WaitForSeconds(1);
                 countDown--;
             }
+
+            scoreBoard.ResetScore();
             SceneManager.LoadScene(0);
         }
     }

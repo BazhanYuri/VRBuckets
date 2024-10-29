@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using Enums;
 using Normal.Realtime;
-using Player;
 using UnityEngine;
 
 namespace Multiplayer.Services
@@ -15,14 +13,15 @@ namespace Multiplayer.Services
         private int _team2Count = 0;
         private RealtimeAvatarManager _manager;
         private ScoreBoard _scoreBoard;
+        private LevelLoader _levelLoader;
         
         private void Awake()
         {
             _manager = FindObjectOfType<RealtimeAvatarManager>();
             _scoreBoard = FindObjectOfType<ScoreBoard>();
+            _levelLoader = FindObjectOfType<LevelLoader>();
             
             _manager.avatarCreated += AssignTeam;
-            _manager.avatarDestroyed += AssignTeam;
             _scoreBoard.OnScoreChanged += OnGoaled;
             
             _manager.avatarCreated += OnAvatarCreated;
@@ -39,6 +38,8 @@ namespace Multiplayer.Services
         {
             Player.Player player = avatar.GetComponent<Player.Player>();
                 player.ballsSpawner.BallThrown -= OnBallThrown;
+                
+                RestartGame();
         }
 
         private void AssignTeam(RealtimeAvatarManager avatarmanager, RealtimeAvatar avatar, bool islocalavatar)
@@ -56,7 +57,7 @@ namespace Multiplayer.Services
 
                 Team team;
                 
-                if (index % 2 == 0)
+                if (index == 0)
                 {
                     team = Team.First;
                     temp1Count++;
@@ -74,7 +75,6 @@ namespace Multiplayer.Services
                 }
                 player.AssignTeam(team);
                 index++;
-                
             }
             
             _team1Count = temp1Count;
@@ -149,13 +149,18 @@ namespace Multiplayer.Services
 
         private IEnumerator StartTimerToCheckIfBallDidNotHit()
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3.5f);
             SwapTurn();
         }
 
         private void SwapTurn()
         {
             _scoreBoard.CurrentTurnIndex = _scoreBoard.CurrentTurnIndex == 0 ? 1 : 0;
+        }
+
+        private void RestartGame()
+        {
+            _levelLoader.RestartGame();
         }
     }
 }

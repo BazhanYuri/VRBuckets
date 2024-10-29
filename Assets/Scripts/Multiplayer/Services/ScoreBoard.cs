@@ -23,6 +23,9 @@ namespace Multiplayer.Services
         public TeamUI firstTeamUI;
         public TeamUI secondTeamUI;
         
+        public RealtimeAvatarManager manager;
+
+        
         public WinScreen winScreen;
         
         private int _currentScoreFirstTeam = 0;
@@ -48,16 +51,6 @@ namespace Multiplayer.Services
                 ThrowScoreZone throwScoreZone = FindCurrentZoneInPlayer();
                 model.firstTeamScore += throwScoreZone.score;
                 OnScoreChanged?.Invoke();
-                
-                if (model.firstTeamScore >= 7)
-                {
-                    winScreen.SetWinner(0);
-                    winScreen.Show();
-                    model.playerTurnIndex = -1;
-                    model.firstTeamScore = 0;
-                    model.secondTeamScore = 0;
-                    gameObject.SetActive(false);
-                }
             }
         }
 
@@ -68,17 +61,16 @@ namespace Multiplayer.Services
                 ThrowScoreZone throwScoreZone = FindCurrentZoneInPlayer();
                 model.secondTeamScore +=  throwScoreZone.score;
                 OnScoreChanged?.Invoke();
-                
-                if (model.secondTeamScore >= 7)
-                {
-                    winScreen.SetWinner(1);
-                    winScreen.Show();
-                    model.playerTurnIndex = -1;
-                    model.firstTeamScore = 0;
-                    model.secondTeamScore = 0;
-                    gameObject.SetActive(false);
-                }
             }
+        }
+
+        public void ResetScore()
+        {
+            model.playerTurnIndex = -1;
+            model.firstTeamScore = 0;
+            model.secondTeamScore = 0;
+            
+            manager.DestroyAvatarIfNeeded();
         }
 
         private ThrowScoreZone FindCurrentZoneInPlayer()
@@ -101,7 +93,7 @@ namespace Multiplayer.Services
             firstTeamCountText.text = "Count: " + first.ToString();
             secondTeamCountText.text = "Count: " + second.ToString();
         }
-        
+
         protected override void OnRealtimeModelReplaced(PlayerTurnInfoModel previousModel, PlayerTurnInfoModel currentModel) {
             if (previousModel != null) {
                 previousModel.firstTeamScoreDidChange -= Changed;
@@ -139,6 +131,7 @@ namespace Multiplayer.Services
             _currentTurnIndex = model.playerTurnIndex;
             
             UpdateUI();
+            CheckWinCondition();
         }
 
         private void UpdateUI()
@@ -148,7 +141,23 @@ namespace Multiplayer.Services
 
             UpdatePlayerTurn();
         }
-        
+
+        private void CheckWinCondition()
+        {
+            if (_currentScoreFirstTeam >= 1)
+            {
+                winScreen.SetWinner(0);
+                winScreen.Show();
+                gameObject.SetActive(false);
+            }
+            else if (_currentScoreSecondTeam >= 1)
+            {
+                winScreen.SetWinner(1);
+                winScreen.Show();
+                gameObject.SetActive(false);
+            }
+        }
+
         private void UpdatePlayerTurn()
         {
             whoseTurnText.text = "Player " + (_currentTurnIndex + 1) + "'s turn";

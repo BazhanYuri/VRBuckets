@@ -1205,6 +1205,7 @@ MonoBehaviour:
   whoseTurnText: {fileID: 1819169111}
   firstTeamUI: {fileID: 8792918929111211355}
   secondTeamUI: {fileID: 148996572}
+  manager: {fileID: 1799508446}
   winScreen: {fileID: 788220019}
 --- !u!114 &634163577
 MonoBehaviour:
@@ -1310,6 +1311,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3993805704650527942, guid: ee6de03ce1986834a91c43107d49eedb,
+        type: 3}
+      propertyPath: scoreBoard
+      value: 
+      objectReference: {fileID: 634163576}
     - target: {fileID: 4002952461601054222, guid: ee6de03ce1986834a91c43107d49eedb,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1939,6 +1945,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072152437}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1236386699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1236386700}
+  - component: {fileID: 1236386701}
+  m_Layer: 0
+  m_Name: SceneLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1236386700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236386699}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1236386701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236386699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340e63529f454a40b59663088f5042b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreBoard: {fileID: 634163576}
 --- !u!1 &1286371358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2198,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485526869}
   m_CullTransparentMesh: 1
+--- !u!114 &1799508446 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114568985850100520, guid: fca9d4afb3743274e8f7da14019d7e0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 492577865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5b6ae53fe1e66d429cc41bbf5b29cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1819169109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,3 +5325,4 @@ SceneRoots:
   - {fileID: 543450652749747488}
   - {fileID: 8204968}
   - {fileID: 788220018}
+  - {fileID: 1236386700}
