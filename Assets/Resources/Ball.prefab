@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7299014488389356622}
   - component: {fileID: 7048605448677943259}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5164041515133830772}
   - component: {fileID: 1362348150992712108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BallHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   - component: {fileID: 344371708856295477}
   - component: {fileID: 1055925072197641844}
   - component: {fileID: 1716701983610403543}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,6 +631,7 @@ MonoBehaviour:
   realtimeTransform: {fileID: 1055925072197641844}
   grabInteractable: {fileID: 1620575439125774352}
   ballAudioSource: {fileID: 1362348150992712108}
+  rb: {fileID: 5113542583084095031}
   currentThrowZone: {fileID: 0}
 --- !u!1 &4815209129205479374
 GameObject:
@@ -641,7 +642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5986005146001268332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}

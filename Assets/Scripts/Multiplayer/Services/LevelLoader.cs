@@ -12,6 +12,5 @@ namespace Multiplayer.Services
             scoreBoard.ResetScore();
             SceneManager.LoadScene(0);
         }
-        
     }
 }

@@ -33,13 +33,13 @@ namespace Multiplayer.Services
         private void OnAvatarCreated(RealtimeAvatarManager avatarmanager, RealtimeAvatar avatar, bool islocalavatar)
         {
             Player.Player player = avatar.GetComponent<Player.Player>();
-                player.ballsSpawner.BallThrown += OnBallThrown;
+                player.ballsSpawner.BallExitedZoneOrThrown += OnBallExitedZoneOrThrown;
         }
         
         private void OnAvatarDestroyed(RealtimeAvatarManager avatarmanager, RealtimeAvatar avatar, bool islocalavatar)
         {
             Player.Player player = avatar.GetComponent<Player.Player>();
-                player.ballsSpawner.BallThrown -= OnBallThrown;
+                player.ballsSpawner.BallExitedZoneOrThrown -= OnBallExitedZoneOrThrown;
                 
                 RestartGame();
         }
@@ -142,17 +142,16 @@ namespace Multiplayer.Services
 
         private void OnGoaled()
         {
-            //StopAllCoroutines();
         }
 
-        private void OnBallThrown()
+        private void OnBallExitedZoneOrThrown()
         {
             StartCoroutine(StartTimerToCheckIfBallDidNotHit());
         }
 
         private IEnumerator StartTimerToCheckIfBallDidNotHit()
         {
-            yield return new WaitForSeconds(3.5f);
+            yield return new WaitForSeconds(0.7f);
             SwapTurn();
         }
 

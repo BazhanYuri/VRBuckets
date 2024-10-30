@@ -29,7 +29,7 @@ namespace Multiplayer.Services
         
         public AudioSource goalAudioSource;
         
-        
+        private const int  _scoreToWin = 33;
         private int _currentScoreFirstTeam = 0;
         private int _currentScoreSecondTeam = 0;
         private int _currentTurnIndex = 0;
@@ -151,18 +151,21 @@ namespace Multiplayer.Services
 
         private void CheckWinCondition()
         {
-            if (_currentScoreFirstTeam >= 10)
+            if (_currentScoreFirstTeam >= _scoreToWin)
             {
-                winScreen.SetWinner(0);
-                winScreen.Show();
-                gameObject.SetActive(false);
+                SetWinner(0);
             }
-            else if (_currentScoreSecondTeam >= 10)
+            else if (_currentScoreSecondTeam >= _scoreToWin)
             {
-                winScreen.SetWinner(1);
-                winScreen.Show();
-                gameObject.SetActive(false);
+                SetWinner(1);
             }
+        }
+
+        private void SetWinner(int winnerIndex)
+        {
+            winScreen.SetWinner(winnerIndex);
+            winScreen.Show();
+            gameObject.SetActive(false);
         }
 
         private void UpdatePlayerTurn()

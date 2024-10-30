@@ -11,24 +11,25 @@ public class Ball : MonoBehaviour
     public RealtimeTransform realtimeTransform;
     public XRGrabInteractable grabInteractable;
     public AudioSource ballAudioSource;
-    
+    public Rigidbody rb;
+
     private Team _team;
+    private bool _isThrown = false;
     private BasketHoop _basketHoop;
     public ThrowScoreZone currentThrowZone;
 
-    public event Action<Ball> OnBallThrown;
+    public event Action<Ball> OnBallExitedZoneOrThrown;
 
     public Team Team
     {
         get => _team;
-        set => _team = value;
     }
 
     private void OnEnable()
     {
         grabInteractable.selectExited.AddListener(OnSelectExited);
     }
-    
+
     private void OnDisable()
     {
         grabInteractable.selectExited.RemoveListener(OnSelectExited);
@@ -59,7 +60,7 @@ public class Ball : MonoBehaviour
         }
     }
 
-    
+
     public void SetTeam(Team team)
     {
         _team = team;
@@ -71,19 +72,33 @@ public class Ball : MonoBehaviour
         {
             return;
         }
+
         InvokeBallThrown();
+        StartCoroutine(DeleteGrabbable());
     }
 
     private void InvokeBallThrown()
     {
-        OnBallThrown?.Invoke(this);
+        if (_isThrown)
+        {
+            return;
+        }
+
+        _isThrown = true;
 
         StartCoroutine(DestroyBall());
     }
 
     private IEnumerator DestroyBall()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.5f);
+        OnBallExitedZoneOrThrown?.Invoke(this);
         Realtime.Destroy(gameObject);
+    }
+
+    private IEnumerator DeleteGrabbable()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(grabInteractable);
     }
 }

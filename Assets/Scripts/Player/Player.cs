@@ -19,6 +19,9 @@ namespace Player
         public TeamChangePopUp teamChangePopUp;
         public PCMovement pcMovement;
         public AreaThrowChecker areaThrowChecker;
+        public AudioListener audioListener;
+        public VoiceSpeakSwitcher voiceSpeakSwitcher;
+        public PlayerJumper playerJumper;
 
 
         public Team team;
@@ -35,6 +38,7 @@ namespace Player
                 vrCamera.enabled = true;
                 XROrigin.enabled = true;
                 ballsSpawner.enabled = true;
+                
                 ScoreBoard scoreBoard = FindObjectOfType<ScoreBoard>();
                 
                 RealtimeTransform realtimeTransform = scoreBoard.GetComponent<RealtimeTransform>();
@@ -48,6 +52,9 @@ namespace Player
                 Destroy(rightController);
                 Destroy(ballsSpawner);
                 Destroy(pcMovement);
+                Destroy(audioListener);
+                Destroy(voiceSpeakSwitcher);
+                Destroy(playerJumper);
             }
         }
         public void AssignTeam(Team second)

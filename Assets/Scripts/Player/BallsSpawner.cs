@@ -15,7 +15,7 @@ namespace Player
         
         private ScoreBoard _scoreBoard;
         private bool _isCanSpawn = true;
-        public event Action BallThrown;
+        public event Action BallExitedZoneOrThrown;
 
         private void OnEnable()
         {
@@ -68,16 +68,16 @@ namespace Player
                 .GetComponent<Ball>();
 
             ball.SetTeam(player.team);
-            ball.OnBallThrown += OnBallThrown;
+            ball.OnBallExitedZoneOrThrown += OnBallExitedZoneOrThrown;
             
             _isCanSpawn = false;
         }
 
-        private void OnBallThrown(Ball obj)
+        private void OnBallExitedZoneOrThrown(Ball obj)
         {
-            BallThrown?.Invoke();
+            BallExitedZoneOrThrown?.Invoke();
             obj.currentThrowZone = currentThrowZoneChecker.CurrentZone;
-            obj.OnBallThrown -= OnBallThrown;
+            obj.OnBallExitedZoneOrThrown -= OnBallExitedZoneOrThrown;
         }
 
         private void AllowToThrow()
